@@ -1,0 +1,31 @@
+{% extends "./layout.html" %} {% block body %}
+<div class="d-sm-inline-flex d-md-flex justify-content-md-center">
+  {% for product in first %}
+  <div class="card m-2" style="width: 18rem">
+    <h3 class="card-title text-center">Ultimo producto</h3>
+    <img src="" class="card-img-top" alt="..." />
+    <div class="card-body align-items-center">
+      <h5 class="card-title">{{ product.tittle }}</h5>
+      <a href="/market/product/{{product.id}}" class="btn btn-primary"
+        >Ver Producto</a
+      >
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% if second.count > 0 %}
+<div class="card d-flex m-2">
+  <div class="card-body">
+    <h5 class="card-title" style="text-align: center">Mas Productos</h5>
+    <div class="card-text">
+      <ul>
+        {% for product in second %}
+        <li>
+          <a href="/market/product/{{product.id}}">{{product.tittle}}:</a
+          >  {{product.description}}  </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endif %} {% endblock %}

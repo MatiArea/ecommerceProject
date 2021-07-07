@@ -1,0 +1,19 @@
+{% extends "../layout.html" %} {% block body %}
+
+  <div class="card m-2 d-flex h-100" style="align-items: center">
+    <img src="..." class="card-img-top" alt="..." />
+    <div class="card-body" style="align-items: center">
+      <h3 class="card-title">{{product.tittle}}</h5>
+      <h5 class="card-title">{{product.category_id.description}}</h5>
+      <p class="card-text">{{product.description}}</p>
+      <p class="card-text"><strong>Precio:</strong> {{product.price}}</p>
+      {% if user.is_authenticated and user.groups.all.0.name == "moderador" %}
+        <a href="#" class="btn btn-warning">Editar Producto</a>
+        <a href="#" class="btn btn-danger">Eliminar Producto</a>
+      {% else %}
+        <a href="#" class="btn btn-success">Agregar al carrito</a>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}
