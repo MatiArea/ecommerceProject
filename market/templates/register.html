@@ -1,0 +1,59 @@
+{% extends "index.html" %} {% block body %}
+
+{% load crispy_forms_tags %}
+
+<div class="card py-5 align-items-center">
+  <h1>Bienvenido</h1>
+  <form method="POST" action="/market/register/">
+    {% csrf_token %}
+    <div class="input-group mt-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre de usuario"
+        aria-label="username"
+        id="username"
+        name="username"
+        required
+      />
+    </div>
+
+    <div class="input-group mt-3">
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Nombre de usuario"
+        aria-label="email"
+        id="email"
+        name="email"
+        required
+      />
+    </div>    
+
+    <div class="input-group mt-3">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Contraseña"
+        aria-label="contrasena"
+        id="contrasena"
+        name="contrasena"
+        required
+      />
+    </div>
+    <div class="input-group mt-3">
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Repita contraseña"
+        aria-label="Contrasena"
+        id="contrasena2"
+        name="contrasena2"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Registrarse</button>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "../layout.html" %} {% block body %}
+
+<div class="card d-flex m-2">
+  <div class="card-body">
+    <h5 class="card-title" style="text-align: center">Mas Productos</h5>
+    <div class="card-text">
+      <ul>
+        {% for product in products %}
+        <li>
+          <a href="/market/product/{{product.id}}">{{product.tittle}}:</a>
+          {{product.description}}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

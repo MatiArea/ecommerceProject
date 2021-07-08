@@ -128,12 +128,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-
-MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'media')
 
 LOGIN_REDIRECT_URL = '/market/home'
 LOGOUT_REDIRECT_URL = '/market/home'
+
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 365
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = False
 
 
 # Default primary key field type

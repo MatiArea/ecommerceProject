@@ -2,9 +2,10 @@
 
 <div class="card m-2 h-100">
   <div class="card-body">
-    <h4 class="card-header text-center">Nuevo Producto</h4>
+    <h4 class="card-header text-center">Editar Producto</h4>
     <div class="card-text">
-      <form class="m-3" method="post" action="new">
+        <form class="m-3" method="post" action="/market/product/edit/{{product_to_edit.id}}">
+
         {% csrf_token %}
         <div class="input-group mt-3">
           <input
@@ -14,6 +15,7 @@
             aria-label="name"
             id="name"
             name="name"
+            value="{{product_to_edit.tittle}}"
             required
           />
         </div>
@@ -26,6 +28,7 @@
             aria-label="Precio"
             id="price"
             name="price"
+            value="{{product_to_edit.price}}"
             required
           />
         </div>
@@ -36,10 +39,10 @@
           name="category"
           required
         >
-          <option selected disabled>Seleccione una categoria</option>
-          {% for category in allCategories %}
-          <option value="{{category.id}}">{{ category.description }}</option>
-          {% endfor %}
+        <option disabled>Seleccione una categoria</option>
+        {% for category in allCategories %}
+          <option value="{{category.id}}" {% if category.id == product_to_edit.category_id.id %}selected="selected"{% endif %}>{{ category.description }}</option>
+        {% endfor %}
         </select>
 
         <div class="input-group mt-3">
@@ -60,12 +63,12 @@
             name="description"
             placeholder="Descripcion"
             required
-          ></textarea>
+            >{{product_to_edit.description}}</textarea>
         </div>
 
         <div class="d-flex justify-content-end m-3">
           <button type="submit" class="btn btn-success btn-sm">
-            Crear producto
+            Editar producto
           </button>
         </div>
       </form>
